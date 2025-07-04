@@ -65,6 +65,13 @@ export const UserUpdatePasswordSchema = z
     message: t('zod.user.passwordMatch'),
   });
 
+// TODO: investigate if coerce is bad
+const userId = z.number({ message: t('zod.user.id'), coerce: true });
+
+export const UserGetSchema = z.object({
+  userId: userId,
+});
+
 export const UserUpdateTotpSchema = z.union([
   z.object({
     type: z.literal('setup'),

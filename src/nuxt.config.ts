@@ -34,6 +34,11 @@ export default defineNuxtConfig({
         language: 'en-US',
         name: 'English',
       },
+			{
+        code: 'ru',
+        language: 'ru-RU',
+        name: 'Русский',
+      },
       {
         code: 'uk',
         language: 'uk-UA',

@@ -191,6 +191,7 @@
       "serverAllowedIps": "serverseitig erlaubte IP-Adressen"
     },
     "user": {
+			"id": "Benutzer-ID",
       "username": "Benutzername",
       "password": "Passwort",
       "remember": "Merken",

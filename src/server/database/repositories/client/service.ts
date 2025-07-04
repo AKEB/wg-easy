@@ -1,6 +1,7 @@
 import { eq, sql } from 'drizzle-orm';
 import { containsCidr, parseCidr } from 'cidr-tools';
 import { client } from './schema';
+import debug from 'debug';
 import type {
   ClientCreateFromExistingType,
   ClientCreateType,
@@ -8,6 +9,8 @@ import type {
 } from './types';
 import type { DBType } from '#db/sqlite';
 import { wgInterface, userConfig } from '#db/schema';
+
+const WG_DEBUG = debug('WireGuard');
 
 function createPreparedStatement(db: DBType) {
   return {
@@ -70,11 +73,11 @@ export class ClientService {
     return this.#statements.findById.execute({ id });
   }
 
-  async create({ name, expiresAt }: ClientCreateType) {
+  async create({ name, expiresAt, userId }: ClientCreateType) {
     const privateKey = await wg.generatePrivateKey();
     const publicKey = await wg.getPublicKey(privateKey);
     const preSharedKey = await wg.generatePreSharedKey();
-
+		WG_DEBUG(`Creating client ${name} with userId key ${userId}`);
     return this.#db.transaction(async (tx) => {
       const clients = await tx.query.client.findMany().execute();
       const clientInterface = await tx.query.wgInterface
@@ -107,7 +110,7 @@ export class ClientService {
         .values({
           name,
           // TODO: properly assign user id
-          userId: 1,
+          userId: userId || 1,
           interfaceId: 'wg0',
           expiresAt,
           privateKey,

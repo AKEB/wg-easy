@@ -1,4 +1,5 @@
 import en from './locales/en.json';
+import ru from './locales/ru.json';
 import uk from './locales/uk.json';
 import fr from './locales/fr.json';
 import de from './locales/de.json';
@@ -10,6 +11,7 @@ export default defineI18nConfig(() => ({
   fallbackLocale: 'en',
   messages: {
     en,
+		ru,
     uk,
     fr,
     de,

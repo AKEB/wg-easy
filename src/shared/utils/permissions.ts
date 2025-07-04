@@ -91,7 +91,7 @@ export const ROLES = {
   CLIENT: {
     clients: {
       view: (user, client) => user.id === client.userId,
-      create: false,
+      create: true,
       update: (user, client) => user.id === client.userId,
       delete: (user, client) => user.id === client.userId,
       custom: true,

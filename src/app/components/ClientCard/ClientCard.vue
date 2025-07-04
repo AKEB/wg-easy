@@ -20,6 +20,7 @@
           </div>
           <ClientCardOneTimeLink :client="client" />
           <ClientCardExpireDate :client="client" />
+          <ClientCardUser :client="client" />
         </div>
 
         <div

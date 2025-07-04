@@ -191,6 +191,7 @@
       "serverAllowedIps": "伺服器IP白名單"
     },
     "user": {
+			"id": "用戶ID",
       "username": "用戶名",
       "password": "密碼",
       "remember": "保持",

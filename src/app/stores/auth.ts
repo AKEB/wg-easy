@@ -16,3 +16,4 @@ export const useAuthStore = defineStore('Auth', () => {
 
   return { userData, update, getSession };
 });
+

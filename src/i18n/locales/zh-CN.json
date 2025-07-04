@@ -190,6 +190,7 @@
       "serverAllowedIps": "服务端允许的IP"
     },
     "user": {
+			"id": "用户ID",
       "username": "用户名",
       "password": "密码",
       "remember": "记住登录",
